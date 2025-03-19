@@ -227,159 +227,159 @@ const ScriptureStudy = () => {
   };
 
   return (
-    <div className="flex flex-col p-4 max-w-6xl mx-auto bg-gray-50 min-h-screen">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">Luke 10:1-10 (KJV)</h1>
-        <p className="text-gray-600 text-lg">Interactive Scripture Study</p>
-      </div>
+    &lt;div className="flex flex-col p-4 max-w-6xl mx-auto bg-gray-50 min-h-screen"&gt;
+      &lt;div className="text-center mb-8"&gt;
+        &lt;h1 className="text-3xl font-bold text-gray-800 mb-4"&gt;Luke 10:1-10 (KJV)&lt;/h1&gt;
+        &lt;p className="text-gray-600 text-lg"&gt;Interactive Scripture Study&lt;/p&gt;
+      &lt;/div&gt;
 
       {/* Visual Navigation */}
-      <div className="flex flex-wrap justify-center gap-4 mb-8">
-        {scriptureData.map((data) => {
+      &lt;div className="flex flex-wrap justify-center gap-4 mb-8"&gt;
+        {scriptureData.map((data) =&gt; {
           const verseThemes = getVerseThemes(data.id);
-          const primaryTheme = verseThemes.length > 0 ? verseThemes[0] : "default";
+          const primaryTheme = verseThemes.length &gt; 0 ? verseThemes[0] : "default";
           const color = themeColors[primaryTheme] || "#718096";
           
           return (
-            <button
+            &lt;button
               key={data.id}
-              onClick={() => setActiveVerse(data.id)}
+              onClick={() =&gt; setActiveVerse(data.id)}
               className={`relative flex flex-col items-center justify-center w-20 h-20 rounded-xl transition-transform hover:scale-105 shadow-md ${
                 activeVerse === data.id ? "ring-4 ring-blue-500" : ""
               }`}
               style={{ backgroundColor: color }}
-            >
-              <span className="text-2xl mb-1">{renderIconForVerse(data.id)}</span>
-              <span className="text-white font-bold">v. {data.id}</span>
-              {verseThemes.length > 0 && (
-                <div className="absolute -bottom-2 -right-2 bg-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold shadow">
+            &gt;
+              &lt;span className="text-2xl mb-1"&gt;{renderIconForVerse(data.id)}&lt;/span&gt;
+              &lt;span className="text-white font-bold"&gt;v. {data.id}&lt;/span&gt;
+              {verseThemes.length &gt; 0 &amp;&amp; (
+                &lt;div className="absolute -bottom-2 -right-2 bg-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold shadow"&gt;
                   {verseThemes.length}
-                </div>
+                &lt;/div&gt;
               )}
-            </button>
+            &lt;/button&gt;
           );
         })}
-      </div>
+      &lt;/div&gt;
 
       {/* Theme Legend */}
-      <div className="flex flex-wrap justify-center gap-2 mb-8">
-        {Object.entries(themeColors).map(([theme, color]) => (
-          <div 
+      &lt;div className="flex flex-wrap justify-center gap-2 mb-8"&gt;
+        {Object.entries(themeColors).map(([theme, color]) =&gt; (
+          &lt;div 
             key={theme} 
             className="flex items-center px-3 py-1 rounded-full text-white text-sm"
             style={{ backgroundColor: color }}
-          >
+          &gt;
             {theme.charAt(0).toUpperCase() + theme.slice(1)}
-          </div>
+          &lt;/div&gt;
         ))}
-      </div>
+      &lt;/div&gt;
 
       {/* Content Display */}
-      <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">Verse {activeVerse}</h2>
-          <div className="flex gap-2">
-            <button 
-              onClick={() => setActiveTab('verse')}
+      &lt;div className="bg-white rounded-xl shadow-lg p-6 mb-8"&gt;
+        &lt;div className="flex justify-between items-center mb-6"&gt;
+          &lt;h2 className="text-2xl font-bold text-gray-800"&gt;Verse {activeVerse}&lt;/h2&gt;
+          &lt;div className="flex gap-2"&gt;
+            &lt;button 
+              onClick={() =&gt; setActiveTab('verse')}
               className={`px-4 py-2 rounded-lg ${activeTab === 'verse' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
-            >
+            &gt;
               Verse
-            </button>
-            <button 
-              onClick={() => setActiveTab('explanation')}
+            &lt;/button&gt;
+            &lt;button 
+              onClick={() =&gt; setActiveTab('explanation')}
               className={`px-4 py-2 rounded-lg ${activeTab === 'explanation' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
-            >
+            &gt;
               Explanation
-            </button>
-            <button 
-              onClick={() => setActiveTab('caseStudy')}
+            &lt;/button&gt;
+            &lt;button 
+              onClick={() =&gt; setActiveTab('caseStudy')}
               className={`px-4 py-2 rounded-lg ${activeTab === 'caseStudy' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
-            >
+            &gt;
               Case Study
-            </button>
-            <button 
-              onClick={() => setActiveTab('relatedVerses')}
+            &lt;/button&gt;
+            &lt;button 
+              onClick={() =&gt; setActiveTab('relatedVerses')}
               className={`px-4 py-2 rounded-lg ${activeTab === 'relatedVerses' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
-            >
+            &gt;
               Related Verses
-            </button>
-          </div>
-        </div>
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
 
-        <div className="bg-gray-50 p-6 rounded-lg">
-          {activeTab === 'verse' && (
-            <div className="text-center">
-              <div className="text-4xl mb-4">{renderIconForVerse(activeVerse)}</div>
-              <p className="text-xl font-serif italic text-gray-800">{scriptureData[activeVerse - 1].verse}</p>
-            </div>
+        &lt;div className="bg-gray-50 p-6 rounded-lg"&gt;
+          {activeTab === 'verse' &amp;&amp; (
+            &lt;div className="text-center"&gt;
+              &lt;div className="text-4xl mb-4"&gt;{renderIconForVerse(activeVerse)}&lt;/div&gt;
+              &lt;p className="text-xl font-serif italic text-gray-800"&gt;{scriptureData[activeVerse - 1].verse}&lt;/p&gt;
+            &lt;/div&gt;
           )}
           
-          {activeTab === 'explanation' && (
-            <div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Explanation</h3>
-              <p className="text-gray-700">{scriptureData[activeVerse - 1].explanation}</p>
-            </div>
+          {activeTab === 'explanation' &amp;&amp; (
+            &lt;div&gt;
+              &lt;h3 className="text-xl font-bold text-gray-800 mb-4"&gt;Explanation&lt;/h3&gt;
+              &lt;p className="text-gray-700"&gt;{scriptureData[activeVerse - 1].explanation}&lt;/p&gt;
+            &lt;/div&gt;
           )}
           
-          {activeTab === 'caseStudy' && (
-            <div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Case Study</h3>
-              <div className="bg-white border-l-4 border-blue-500 p-4 rounded shadow">
-                <p className="text-gray-700">{scriptureData[activeVerse - 1].caseStudy}</p>
-              </div>
-            </div>
+          {activeTab === 'caseStudy' &amp;&amp; (
+            &lt;div&gt;
+              &lt;h3 className="text-xl font-bold text-gray-800 mb-4"&gt;Case Study&lt;/h3&gt;
+              &lt;div className="bg-white border-l-4 border-blue-500 p-4 rounded shadow"&gt;
+                &lt;p className="text-gray-700"&gt;{scriptureData[activeVerse - 1].caseStudy}&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
           )}
           
-          {activeTab === 'relatedVerses' && (
-            <div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Related Verses</h3>
-              <ul className="space-y-2">
-                {scriptureData[activeVerse - 1].relatedVerses.map((verse, index) => (
-                  <li key={index} className="bg-white p-3 rounded shadow">
+          {activeTab === 'relatedVerses' &amp;&amp; (
+            &lt;div&gt;
+              &lt;h3 className="text-xl font-bold text-gray-800 mb-4"&gt;Related Verses&lt;/h3&gt;
+              &lt;ul className="space-y-2"&gt;
+                {scriptureData[activeVerse - 1].relatedVerses.map((verse, index) =&gt; (
+                  &lt;li key={index} className="bg-white p-3 rounded shadow"&gt;
                     {verse}
-                  </li>
+                  &lt;/li&gt;
                 ))}
-              </ul>
-            </div>
+              &lt;/ul&gt;
+            &lt;/div&gt;
           )}
-        </div>
-      </div>
+        &lt;/div&gt;
+      &lt;/div&gt;
 
       {/* Journey Visualization */}
-      <div className="bg-white rounded-xl shadow-lg p-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">The Disciples' Journey</h2>
-        <div className="relative h-64">
-          <div className="absolute w-full h-2 bg-gray-200 top-1/2 transform -translate-y-1/2">
-            <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-full flex justify-between">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((step) => (
-                <div 
+      &lt;div className="bg-white rounded-xl shadow-lg p-6"&gt;
+        &lt;h2 className="text-2xl font-bold text-gray-800 mb-6 text-center"&gt;The Disciples' Journey&lt;/h2&gt;
+        &lt;div className="relative h-64"&gt;
+          &lt;div className="absolute w-full h-2 bg-gray-200 top-1/2 transform -translate-y-1/2"&gt;
+            &lt;div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-full flex justify-between"&gt;
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((step) =&gt; (
+                &lt;div 
                   key={step} 
                   className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                    step <= activeVerse ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-500'
+                    step &lt;= activeVerse ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-500'
                   } cursor-pointer`}
-                  onClick={() => setActiveVerse(step)}
-                >
+                  onClick={() =&gt; setActiveVerse(step)}
+                &gt;
                   {step}
-                </div>
+                &lt;/div&gt;
               ))}
-            </div>
-          </div>
+            &lt;/div&gt;
+          &lt;/div&gt;
           
-          <div className="absolute top-full mt-4 w-full flex justify-between text-sm text-center text-gray-600">
-            <div className="w-12">Sending</div>
-            <div className="w-12">Prayer</div>
-            <div className="w-12">Warning</div>
-            <div className="w-12">Faith</div>
-            <div className="w-12">Peace</div>
-            <div className="w-12">Reception</div>
-            <div className="w-12">Hospitality</div>
-            <div className="w-12">Acceptance</div>
-            <div className="w-12">Healing</div>
-            <div className="w-12">Rejection</div>
-          </div>
-        </div>
-      </div>
-    </div>
+          &lt;div className="absolute top-full mt-4 w-full flex justify-between text-sm text-center text-gray-600"&gt;
+            &lt;div className="w-12"&gt;Sending&lt;/div&gt;
+            &lt;div className="w-12"&gt;Prayer&lt;/div&gt;
+            &lt;div className="w-12"&gt;Warning&lt;/div&gt;
+            &lt;div className="w-12"&gt;Faith&lt;/div&gt;
+            &lt;div className="w-12"&gt;Peace&lt;/div&gt;
+            &lt;div className="w-12"&gt;Reception&lt;/div&gt;
+            &lt;div className="w-12"&gt;Hospitality&lt;/div&gt;
+            &lt;div className="w-12"&gt;Acceptance&lt;/div&gt;
+            &lt;div className="w-12"&gt;Healing&lt;/div&gt;
+            &lt;div className="w-12"&gt;Rejection&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
   );
 };
 
@@ -397,9 +397,9 @@ export default ScriptureStudy;</code></pre>
 
 function App() {
   return (
-    <div className="App">
-      <ScriptureStudy />
-    </div>
+    &lt;div className="App"&gt;
+      &lt;ScriptureStudy /&gt;
+    &lt;/div&gt;
   );
 }
 
